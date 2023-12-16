@@ -1,11 +1,11 @@
 import Link from "next/link";
 
 import { CreatePost } from "@/app/_components/create-post";
-import { api } from "@/trpc/server";
+import { Hello } from "./_queries/hello";
+import { Suspense } from "react";
+import { GetLatest } from "./_queries/get-latest";
 
-export default async function Home() {
-  const hello = await api.post.hello.query({ text: "from tRPC" });
-
+export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
@@ -37,9 +37,9 @@ export default async function Home() {
           </Link>
         </div>
         <div className="flex flex-col items-center gap-2">
-          <p className="text-2xl text-white">
-            {hello ? hello.greeting : "Loading tRPC query..."}
-          </p>
+          <Suspense fallback="...loading">
+            <Hello />
+          </Suspense>
         </div>
 
         <CrudShowcase />
@@ -48,20 +48,14 @@ export default async function Home() {
   );
 }
 
-async function CrudShowcase() {
-  const start = Date.now();
-  const latestPost = await api.post.getLatest.query();
-  const duration = Date.now() - start;
-
+function CrudShowcase() {
   return (
     <div className="w-full max-w-xs">
-      {latestPost ? (
-        <p className="truncate">Your most recent post: {latestPost.name}</p>
-      ) : (
-        <p>You have no posts yet.</p>
-      )}
-      Drizzle + Cloudflare D1 (us-east-1 Virginia) {duration}ms
+      <Suspense fallback="...loading">
+        <GetLatest />
+      </Suspense>
       <CreatePost />
     </div>
   );
 }
+
