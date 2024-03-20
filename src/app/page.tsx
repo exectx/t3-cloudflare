@@ -4,7 +4,7 @@ import { CreatePost } from "@/app/_components/create-post";
 import { api } from "@/trpc/server";
 
 export default async function Home() {
-  const hello = await api.post.hello.query({ text: "from tRPC" });
+  const hello = await api.post.hello({ text: "from tRPC" });
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
@@ -49,9 +49,7 @@ export default async function Home() {
 }
 
 async function CrudShowcase() {
-  const start = Date.now();
-  const latestPost = await api.post.getLatest.query();
-  const duration = Date.now() - start;
+  const latestPost = await api.post.getLatest();
 
   return (
     <div className="w-full max-w-xs">
@@ -60,7 +58,7 @@ async function CrudShowcase() {
       ) : (
         <p>You have no posts yet.</p>
       )}
-      Drizzle + Cloudflare D1 (us-east-1 Virginia) {duration}ms
+
       <CreatePost />
     </div>
   );

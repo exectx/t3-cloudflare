@@ -1,12 +1,12 @@
 import { type Config } from "drizzle-kit";
 
+import { env } from "@/env";
+
 export default {
   schema: "./src/server/db/schema.ts",
-  out: "./migrations",
-  // driver: "d1",
-  // dbCredentials: {
-  //   dbName: "d1-ai",
-  //   wranglerConfigPath: "./wrangler.toml"
-  // },
-  tablesFilter: ["ai-nextjs_*"],
+  driver: "better-sqlite",
+  dbCredentials: {
+    url: env.DATABASE_URL,
+  },
+  tablesFilter: ["t3-upstream_*"],
 } satisfies Config;

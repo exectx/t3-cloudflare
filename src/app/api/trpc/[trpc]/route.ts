@@ -5,8 +5,6 @@ import { env } from "@/env";
 import { appRouter } from "@/server/api/root";
 import { createTRPCContext } from "@/server/api/trpc";
 
-export const runtime = "edge";
-
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when
  * handling a HTTP request (e.g. when you make requests from Client Components).
@@ -27,7 +25,7 @@ const handler = (req: NextRequest) =>
       env.NODE_ENV === "development"
         ? ({ path, error }) => {
             console.error(
-              `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`,
+              `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`
             );
           }
         : undefined,
