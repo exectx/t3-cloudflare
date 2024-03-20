@@ -1,5 +1,5 @@
-import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
+import { binding } from "cf-bindings-proxy";
+import { drizzle } from "drizzle-orm/d1";
 
 import { env } from "@/env";
 import * as schema from "./schema";
@@ -9,11 +9,13 @@ import * as schema from "./schema";
  * update.
  */
 const globalForDb = globalThis as unknown as {
-  conn: Database.Database | undefined;
+  conn: D1Database | undefined;
 };
 
-export const conn =
-  globalForDb.conn ?? new Database(env.DATABASE_URL, { fileMustExist: false });
+/**
+ * NOTE: I am not using https://github.com/cloudflare/next-on-pages/tree/main/internal-packages/next-dev since it can't be called at the top level
+ */
+export const conn = globalForDb.conn ?? binding<D1Database>(env.D1_BINDING);
 if (env.NODE_ENV !== "production") globalForDb.conn = conn;
 
 export const db = drizzle(conn, { schema });
