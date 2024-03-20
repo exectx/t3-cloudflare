@@ -1,3 +1,32 @@
+# Cloudflare setup
+For dev mode you need to:
+
+1. Create a D1 Database https://developers.cloudflare.com/d1/get-started/#3-create-a-database
+2. Create a `.env` file and a `wrangler.toml` file with the necessary information.
+3. Generate migration files:
+
+    ```sh
+    pnpm db:generate
+    ```
+    
+5. Run migrations locally:
+   
+    ```sh
+    pnpm db:migrate:local
+    ```
+
+7. Run proxy bindings (needed for HMR):
+
+    ```sh
+    pnpm bindings
+    ```
+    
+8. Run nextjs:
+
+     ```sh
+     pnpm dev
+     ```
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
