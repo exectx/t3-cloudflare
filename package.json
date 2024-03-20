@@ -4,7 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build",
     "db:up": "drizzle-kit up:sqlite",
     "db:generate": "drizzle-kit generate:sqlite",
     "db:migrate:local": "wrangler d1 migrations apply t3-cloudflare --local",
@@ -13,9 +12,14 @@
     "db:studio:local": "cross-env LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit) drizzle-kit studio",
     "db:studio:preview": "cross-env DB_NAME='t3-cloudflare-preview' WRANGLER_CONFIG='--environment=preview' drizzle-kit studio",
     "db:studio:prod": "drizzle-kit studio",
+    "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "pages:build": "pnpm next-on-pages",
+    "pages:watch": "pnpm next-on-pages --watch",
+    "pages:dev": "pnpm wrangler pages dev .vercel/output/static",
+    "bindings": "cf-bindings-proxy"
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.9.2",
@@ -34,6 +38,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "1",
     "@types/better-sqlite3": "^7.6.9",
     "@types/eslint": "^8.56.2",
     "@types/node": "^20.11.20",
