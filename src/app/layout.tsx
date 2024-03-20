@@ -15,6 +15,8 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
+export const runtime = "edge";
+
 export default function RootLayout({
   children,
 }: {
