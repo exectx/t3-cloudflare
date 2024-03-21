@@ -8,6 +8,7 @@
     "db:generate": "drizzle-kit generate:sqlite",
     "db:migrate:local": "wrangler d1 migrations apply t3-cloudflare --local",
     "db:migrate:prod": "wrangler d1 migrations apply t3-cloudflare",
+    "db:migrate:prod:remote": "wrangler d1 migrations apply t3-cloudflare --remote",
     "db:migrate:preview": "wrangler d1 migrations apply --env preview t3-cloudflare-preview",
     "db:studio:local": "cross-env LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit) drizzle-kit studio",
     "db:studio:preview": "cross-env DB_NAME='t3-cloudflare-preview' WRANGLER_CONFIG='--environment=preview' drizzle-kit studio",
