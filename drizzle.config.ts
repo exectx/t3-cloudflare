@@ -22,7 +22,7 @@ export default env.LOCAL_DB_PATH
       driver: "d1",
       dbCredentials: {
         wranglerConfigPath:
-          new URL("./wrangler.toml", import.meta.url).pathname +
+          new URL("wrangler.toml", import.meta.url).pathname +
           env.WRANGLER_CONFIG
             ? ` ${env.WRANGLER_CONFIG}`
             : "",

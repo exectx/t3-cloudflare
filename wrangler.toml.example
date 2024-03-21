@@ -3,10 +3,11 @@
 node_compat = true
 compatibility_flags = [ "nodejs_compat" ]
 
-# WARNING: When running a production build locally using wrangler, .env file seems to be omitted so make sure to have the same environment variables in your wrangler.toml file
+# WARNING: When running a production build locally using Wrangler, be aware that the .env file may be omitted. Therefore, ensure that you have the same environment variables in your wrangler.toml file.
 [vars]
 D1_BINDING = "DB"
 DB_PREFIX = "t3-cloudflare" # The prefix doesn't need to be the exact same as your database name
+DB_NAME = "t3-cloudflare" # The name of your D1 database
 
 [[d1_databases]]
 binding = "DB" # i.e. available in your Worker on env.DB
