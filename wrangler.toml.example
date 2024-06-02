@@ -1,12 +1,13 @@
 # Your wrangler.toml file should look something like this:
 
-node_compat = true
-compatibility_flags = [ "nodejs_compat" ]
+name = "t3-cloudflare"
+compatibility_date = "2024-05-29"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
 
 # WARNING: When running a production build locally using Wrangler, be aware that the .env file may be omitted. Therefore, ensure that you have the same environment variables in your wrangler.toml file.
 [vars]
 D1_BINDING = "DB"
-DB_PREFIX = "t3-cloudflare" # The prefix doesn't need to be the exact same as your database name
 DB_NAME = "t3-cloudflare" # The name of your D1 database
 
 [[d1_databases]]
