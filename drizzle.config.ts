@@ -10,15 +10,16 @@ import { env } from "@/env";
 export default env.LOCAL_DB_PATH
   ? ({
       schema: "./src/server/db/schema.ts",
-      driver: "better-sqlite",
+      dialect: "sqlite",
       dbCredentials: {
         url: env.LOCAL_DB_PATH,
       },
-      tablesFilter: [`${env.DB_PREFIX}_*`],
+      tablesFilter: [`t3-cloudflare_*`],
     } satisfies Config)
   : ({
       schema: "./src/server/db/schema.ts",
       out: "./migrations",
+      dialect: "sqlite",
       driver: "d1",
       dbCredentials: {
         wranglerConfigPath:
@@ -28,5 +29,5 @@ export default env.LOCAL_DB_PATH
             : "",
         dbName: env.DB_NAME!,
       },
-      tablesFilter: [`${env.DB_PREFIX}_*`],
+      tablesFilter: [`t3-cloudflare_*`],
     } satisfies Config);

@@ -7,7 +7,6 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    DB_PREFIX: z.string(),
     LOCAL_DB_PATH: z.string().optional(),
     WRANGLER_CONFIG: z.string().optional(),
     DB_NAME: z.string().optional(),
@@ -31,7 +30,6 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
-    DB_PREFIX: process.env.DB_PREFIX,
     LOCAL_DB_PATH: process.env.LOCAL_DB_PATH,
     WRANGLER_CONFIG: process.env.WRANGLER_CONFIG,
     DB_NAME: process.env.DB_NAME,
