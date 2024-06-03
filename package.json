@@ -4,25 +4,21 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "db:up": "drizzle-kit up:sqlite",
-    "db:generate": "drizzle-kit generate:sqlite",
-    "db:migrate:local": "wrangler d1 migrations apply t3-cloudflare --local",
-    "db:migrate:prod": "wrangler d1 migrations apply t3-cloudflare",
-    "db:migrate:prod:remote": "wrangler d1 migrations apply t3-cloudflare --remote",
-    "db:migrate:preview": "wrangler d1 migrations apply --env preview t3-cloudflare-preview",
-    "db:studio:local": "cross-env LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit) drizzle-kit studio",
-    "db:studio:preview": "cross-env DB_NAME='t3-cloudflare-preview' WRANGLER_CONFIG='--environment=preview' drizzle-kit studio",
-    "db:studio:prod": "drizzle-kit studio",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
+    "db:up": "pnpm with-env drizzle-kit up",
+    "db:generate": "pnpm with-env drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply prod-d1 --local",
+    "db:migrate:prod": "wrangler d1 migrations apply prod-d1 --remote",
+    "db:studio:local": "pnpm with-env cross-env LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit) drizzle-kit studio --config drizzle.local.config.ts",
+    "db:studio:prod": "pnpm with-env drizzle-kit studio",
+    "dev": "pnpm with-env next dev",
+    "lint": "pnpm with-env next lint",
     "pages:dev": "pnpm wrangler pages dev",
-    "pages:build": "pnpm next-on-pages",
+    "pages:build": "pnpm with-env next-on-pages",
     "preview": "pnpm pages:build && wrangler pages dev",
     "deploy": "pnpm pages:build && wrangler pages deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
-    "bindings": "cf-bindings-proxy"
+    "bindings": "cf-bindings-proxy",
+    "with-env": "dotenv -e .dev.vars --"
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.10.1",
@@ -52,6 +48,7 @@
     "@typescript-eslint/parser": "^7.1.1",
     "better-sqlite3": "^9.4.3",
     "cross-env": "^7.0.3",
+    "dotenv-cli": "^7.4.2",
     "drizzle-kit": "^0.21.4",
     "eslint": "^8",
     "eslint-config-next": "^14.1.0",
@@ -62,6 +59,7 @@
     "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.2",
+    "vercel": "^34.2.4",
     "wrangler": "^3.58.0"
   },
   "ct3aMetadata": {
@@ -69,3 +67,4 @@
   },
   "packageManager": "pnpm@9.1.1"
 }
+

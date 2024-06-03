@@ -5,20 +5,9 @@ compatibility_date = "2024-05-29"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
-# WARNING: When running a production build locally using Wrangler, be aware that the .env file may be omitted. Therefore, ensure that you have the same environment variables in your wrangler.toml file.
-[vars]
-D1_BINDING = "DB"
-DB_NAME = "t3-cloudflare" # The name of your D1 database
-
+# If you are only using Pages + D1, you only need the below in your wrangler.toml to interact with D1 locally.
 [[d1_databases]]
-binding = "DB" # i.e. available in your Worker on env.DB
-database_name = "t3-cloudflare" # When you create your D1 DB, you choose the name
-database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-preview_database_id = "DB"
-
-[env.preview]
-name = "preview"
-[[env.preview.d1_databases]]
-binding = "DB" # i.e. available in your Worker on env.DB
-database_name = "t3-cloudflare-preview"
-database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+binding = "DB" # Should match preview_database_id
+database_name = "prod-d1"
+database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # wrangler d1 info YOUR_DATABASE_NAME
+preview_database_id = "DB" # Required for Pages local development
