@@ -3,17 +3,50 @@
 For dev mode you need to:
 
 1. Create a D1 Database https://developers.cloudflare.com/d1/get-started/#3-create-a-database
-1. Create a `.env` file and a `wrangler.toml` file with the necessary information.
-1. Generate migration files:
+
+   ```sh
+   pnpx wrangler d1 create <DATABASE-NAME>
+   ```
+
+1. Copy the `.dev.vars.example` file to `.dev.vars` and fill in the necessary information
+
+   ```sh
+   cp .dev.vars.example .dev.vars
+   ```
+
+1. Copy `wrangler.toml.example` to `wrangler.toml` and replace the `database_id` with the one you created in the first step.
+
+   ```sh
+   cp wrangler.toml.example wrangler.toml
+   ```
+
+1. After installing dependencies generate migration files
 
    ```sh
    pnpm db:generate
    ```
 
-1. Run migrations locally:
+   and run migrations
 
    ```sh
+   # locally
    pnpm db:migrate:local
+   # or run on production
+   # pnpm db:migrate:prod
+   ```
+
+1. Run nextjs
+
+   You can run the dev server
+
+   ```sh
+   pnpm dev
+   ```
+
+   Or run a local production build
+
+   ```sh
+   pnpm preview
    ```
 
 1. (OPTIONAL) Run proxy bindings (previously needed for HMR):
@@ -22,13 +55,31 @@ For dev mode you need to:
    pnpm bindings
    ```
 
-1. Run nextjs:
+1. To deploy to Cloudflare, follow [cloudflare's Next.js guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-nextjs-site/#connect-your-application-to-the-github-repository-via-the-cloudflare-dashboard)
 
-   ```sh
-   pnpm dev
-   ```
+> Don't forget to set the environment variables in the Cloudflare dashboard and to run migrations on the production database.
 
-1. To deploy to Cloudflare, follow cloudflare's guide: https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-nextjs-site/#deploy-your-application-and-iterate
+# Drizzle Studio
+
+To access the local sqlite D1 database you need to run the following command.
+You don't need any cloudflare environment variables for this.
+
+```sh
+pnpm db:studio:local
+```
+
+To access the production D1 database you need to run the following command. It needs valid `CLOUDFLARE_*` environment variables:
+
+- You can find accountId, databaseId and token in Cloudflare dashboard
+- To get accountId go to Workers & Pages -> Overview -> copy Account ID from the right sidebar
+- To get databaseId open D1 database you want to connect to and copy Database ID
+- To get token go to My profile -> API Tokens and create token with D1 edit permissions
+
+Now you can run drizzle studio
+
+```sh
+pnpm db:studio:prod
+```
 
 # Create T3 App
 
