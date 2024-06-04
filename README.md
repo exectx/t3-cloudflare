@@ -78,7 +78,7 @@ You don't need any cloudflare environment variables for this.
 pnpm db:studio:local
 ```
 
-To access the production D1 database you need to run the following command. It needs valid `CLOUDFLARE_*` environment variables:
+To access the remote D1 database you need to run the following command. It needs valid `CLOUDFLARE_*` environment variables:
 
 - You can find accountId, databaseId and token in Cloudflare dashboard
 - To get accountId go to Workers & Pages -> Overview -> copy Account ID from the right sidebar
@@ -88,7 +88,7 @@ To access the production D1 database you need to run the following command. It n
 Now you can run drizzle studio
 
 ```sh
-pnpm db:studio:prod
+pnpm db:studio
 ```
 
 # Create T3 App
