@@ -12,11 +12,9 @@ export const env = createEnv({
    */
   server: {
     LOCAL_DB_PATH: z.string().optional(),
-    WRANGLER_CONFIG: z.string().optional(),
-    DB_NAME: z.string().optional(),
-    CLOUDFLARE_ACCOUNT_ID: z.string(),
-    CLOUDFLARE_D1_DATABASE_ID: z.string(),
-    CLOUDFLARE_TOKEN: z.string(),
+    CLOUDFLARE_ACCOUNT_ID: z.string().optional(),
+    CLOUDFLARE_D1_DATABASE_ID: z.string().optional(),
+    CLOUDFLARE_TOKEN: z.string().optional(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -37,8 +35,6 @@ export const env = createEnv({
    */
   runtimeEnv: {
     LOCAL_DB_PATH: process.env.LOCAL_DB_PATH,
-    WRANGLER_CONFIG: process.env.WRANGLER_CONFIG,
-    DB_NAME: process.env.DB_NAME,
     CLOUDFLARE_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID,
     CLOUDFLARE_D1_DATABASE_ID: process.env.CLOUDFLARE_D1_DATABASE_ID,
     CLOUDFLARE_TOKEN: process.env.CLOUDFLARE_TOKEN,
