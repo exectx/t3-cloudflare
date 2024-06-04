@@ -2,7 +2,7 @@
 
 For dev mode you need to:
 
-1. Create a D1 Database https://developers.cloudflare.com/d1/get-started/#3-create-a-database
+1. Create a D1 Database, Cloudflare's [guide](https://developers.cloudflare.com/d1/get-started/#3-create-a-database)
 
    ```sh
    pnpx wrangler d1 create <DATABASE-NAME>
