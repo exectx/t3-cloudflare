@@ -8,13 +8,13 @@ For dev mode you need to:
    pnpx wrangler d1 create <DATABASE-NAME>
    ```
 
-1. Copy the `.dev.vars.example` file to `.dev.vars` and fill in the necessary information
+1. Configure environment variables:
 
    ```sh
    cp .dev.vars.example .dev.vars
    ```
 
-1. Copy `wrangler.toml.example` to `wrangler.toml` and replace the `database_id` with the one you created in the first step.
+1. Configure `wrangler.toml.example` to `wrangler.toml` and replace the `database_id` with the one you created in the first step.
 
    ```sh
    cp wrangler.toml.example wrangler.toml
@@ -26,13 +26,23 @@ For dev mode you need to:
    pnpm db:generate
    ```
 
-   and run migrations
+   and run migrations or push the changes
 
    ```sh
    # locally
    pnpm db:migrate:local
-   # or run on production
-   # pnpm db:migrate:prod
+   # or run on a production db
+   # `pnpm db:migrate` which needs CLOUDFLARE_* env vars
+   # or `pnpm d1:migrate:remote` which uses wrangler
+   ```
+
+   (Optional) For faster development and prototyping, you can `push` the changes
+
+   ```sh
+   # locally
+   pnpm db:push:local
+   # remotely (needs CLOUDFLARE_* env vars)
+   pnpm db:push
    ```
 
 1. Run nextjs
