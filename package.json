@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "vercel-build": "next build",
     "db:up": "pnpm with-env drizzle-kit up",
     "db:generate": "pnpm with-env drizzle-kit generate",
     "db:push": "pnpm with-env drizzle-kit push",
