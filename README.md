@@ -1,6 +1,6 @@
 > [!IMPORTANT]
-> Turso db variant - [turso](https://github.com/van14U/t3-cloudflare/tree/turso-db)
-> Cloudflare D1 variant - [d1](https://github.com/van14U/t3-cloudflare/tree/main)
+> - Turso branch - [turso](https://github.com/van14U/t3-cloudflare/tree/turso-db)
+> - Cloudflare D1 branch - [d1](https://github.com/van14U/t3-cloudflare/tree/main)
 
 # Turso setup
 
