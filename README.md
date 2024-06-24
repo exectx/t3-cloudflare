@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> Turso db variant - [turso](https://github.com/van14U/t3-cloudflare/tree/turso-db)
+> Cloudflare D1 variant - [d1](https://github.com/van14U/t3-cloudflare/tree/main)
+
 # Cloudflare setup
 
 For dev mode you need to:
@@ -67,6 +71,7 @@ For dev mode you need to:
 
 1. To deploy to Cloudflare, follow [cloudflare's Next.js guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-nextjs-site/#connect-your-application-to-the-github-repository-via-the-cloudflare-dashboard)
 
+> [!WARNING]  
 > Don't forget to set the environment variables in the Cloudflare dashboard and to run migrations on the production database.
 
 # Drizzle Studio
