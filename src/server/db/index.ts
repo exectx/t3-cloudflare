@@ -1,5 +1,5 @@
-import { getRequestContext } from "@cloudflare/next-on-pages";
-import { drizzle } from "drizzle-orm/d1";
+import { type Client, createClient } from "@libsql/client";
+import { drizzle } from "drizzle-orm/libsql";
 
 import { env } from "@/env";
 import * as schema from "./schema";
@@ -9,16 +9,16 @@ import * as schema from "./schema";
  * update.
  */
 const globalForDb = globalThis as unknown as {
-  client?: D1Database;
+  client: Client | undefined;
 };
 
-export let client: D1Database | undefined;
+export let client: Client | undefined;
 
+/**
+ * Avoid starting connections during builds
+ */
 export const db = () => {
-  /**
-   * Don't call getRequestContext() at the top level
-   */
-  client = globalForDb.client ?? getRequestContext().env.DB;
+  client = globalForDb.client ?? createClient({ url: env.DATABASE_URL });
   if (env.NODE_ENV !== "production") globalForDb.client = client;
   return drizzle(client, { schema });
 };

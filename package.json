@@ -8,14 +8,9 @@
     "db:up": "pnpm with-env drizzle-kit up",
     "db:generate": "pnpm with-env drizzle-kit generate",
     "db:push": "pnpm with-env drizzle-kit push",
-    "db:push:local": "pnpm with-env pnpm with-local-db drizzle-kit push --config drizzle.local.config.ts",
     "db:migrate": "pnpm with-env drizzle-kit migrate",
-    "db:migrate:local": "pnpm with-env pnpm with-local-db drizzle-kit migrate --config drizzle.local.config.ts",
     "db:check": "pnpm with-env drizzle-kit check",
     "db:studio": "pnpm with-env drizzle-kit studio",
-    "db:studio:local": "pnpm with-env pnpm with-local-db drizzle-kit studio --config drizzle.local.config.ts",
-    "d1:migrate:local": "wrangler d1 migrations apply prod-d1 --local",
-    "d1:migrate:remote": "wrangler d1 migrations apply prod-d1 --remote",
     "dev": "pnpm with-env next dev",
     "lint": "pnpm with-env next lint",
     "pages:dev": "pnpm wrangler pages dev",
@@ -24,10 +19,10 @@
     "deploy": "pnpm pages:build && wrangler pages deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
     "bindings": "cf-bindings-proxy",
-    "with-env": "dotenv -e .dev.vars --",
-    "with-local-db": "cross-env LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit)"
+    "with-env": "dotenv -e .dev.vars --"
   },
   "dependencies": {
+    "@libsql/client": "^0.6.2",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@tanstack/react-query": "^5.39.0",
     "@trpc/client": "next",
@@ -46,7 +41,6 @@
   "devDependencies": {
     "@cloudflare/next-on-pages": "1",
     "@cloudflare/workers-types": "^4.20240529.0",
-    "@types/better-sqlite3": "^7.6.9",
     "@types/eslint": "^8",
     "@types/node": "^20",
     "@types/react": "^18",
