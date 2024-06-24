@@ -11,10 +11,7 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    LOCAL_DB_PATH: z.string().optional(),
-    CLOUDFLARE_ACCOUNT_ID: z.string().optional(),
-    CLOUDFLARE_D1_DATABASE_ID: z.string().optional(),
-    CLOUDFLARE_TOKEN: z.string().optional(),
+    DATABASE_URL: z.string(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -34,10 +31,7 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
-    LOCAL_DB_PATH: process.env.LOCAL_DB_PATH,
-    CLOUDFLARE_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID,
-    CLOUDFLARE_D1_DATABASE_ID: process.env.CLOUDFLARE_D1_DATABASE_ID,
-    CLOUDFLARE_TOKEN: process.env.CLOUDFLARE_TOKEN,
+    DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
