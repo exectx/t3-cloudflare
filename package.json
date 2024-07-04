@@ -44,7 +44,7 @@
     "zod": "^3.23.3"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "1",
+    "@cloudflare/next-on-pages": "^1.12.0",
     "@cloudflare/workers-types": "^4.20240529.0",
     "@types/better-sqlite3": "^7.6.9",
     "@types/eslint": "^8",
@@ -53,14 +53,13 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
-    "better-sqlite3": "^9.4.3",
     "cross-env": "^7.0.3",
     "dotenv-cli": "^7.4.2",
     "drizzle-kit": "^0.21.4",
     "eslint": "^8",
     "eslint-config-next": "^14.1.0",
     "eslint-plugin-drizzle": "^0.2.3",
-    "eslint-plugin-next-on-pages": "^1.11.3",
+    "eslint-plugin-next-on-pages": "^1.12.0",
     "postcss": "^8.4.34",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
@@ -74,3 +73,4 @@
   },
   "packageManager": "pnpm@9.1.1"
 }
+
