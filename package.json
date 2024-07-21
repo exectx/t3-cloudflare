@@ -61,7 +61,7 @@
     "eslint-plugin-next-on-pages": "^1.12.1",
     "postcss": "^8.4.39",
     "prettier": "^3.3.2",
-    "prettier-plugin-tailwindcss": "^0.5.14",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.5.3",
     "vercel": "^35.1.0",
