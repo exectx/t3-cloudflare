@@ -2,7 +2,15 @@
 > - Turso branch - [turso](https://github.com/van14U/t3-cloudflare/tree/turso-db)
 > - Cloudflare D1 branch - [d1](https://github.com/van14U/t3-cloudflare/tree/main)
 
-# Cloudflare setup
+## Installation
+You can use this as a template or you can run (Cloudflare C3 CLI) using pnpm as a package manager:
+
+```sh
+pnpx create-cloudflare@latest --template=https://github.com/exectx/t3-cloudflare.git
+```
+
+
+## Cloudflare setup
 
 For dev mode you need to:
 
@@ -74,7 +82,7 @@ For dev mode you need to:
 > [!WARNING]  
 > Don't forget to set the environment variables in the Cloudflare dashboard and to run migrations on the production database.
 
-# Drizzle Studio
+## Drizzle Studio
 
 To access the local sqlite D1 database you need to run the following command.
 You don't need any cloudflare environment variables for this.
