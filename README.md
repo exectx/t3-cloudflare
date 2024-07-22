@@ -1,14 +1,22 @@
 > [!IMPORTANT]
+>
 > - Turso branch - [turso](https://github.com/van14U/t3-cloudflare/tree/turso-db)
 > - Cloudflare D1 branch - [d1](https://github.com/van14U/t3-cloudflare/tree/main)
 
+- [x] Next.js
+- [x] Cloudflare pages (next-on-pages)
+- [x] tRPC
+- [x] DrizzleORM (Cloudflare D1)
+- [x] Drizzle studio (local and remote with d1-http driver)
+- [ ] No Auth
+
 ## Installation
+
 You can use this as a template or you can run (Cloudflare C3 CLI) using pnpm as a package manager:
 
 ```sh
 pnpx create-cloudflare@latest --template=https://github.com/exectx/t3-cloudflare.git
 ```
-
 
 ## Cloudflare setup
 
@@ -24,12 +32,6 @@ For dev mode you need to:
 
    ```sh
    cp .dev.vars.example .dev.vars
-   ```
-
-1. Configure `wrangler.toml.example` to `wrangler.toml` and replace the `database_id` with the one you created in the first step.
-
-   ```sh
-   cp wrangler.toml.example wrangler.toml
    ```
 
 1. After installing dependencies generate migration files
@@ -103,33 +105,3 @@ Now you can run drizzle studio
 ```sh
 pnpm db:studio
 ```
-
-# Create T3 App
-
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
-
-## What's next? How do I make an app with this?
-
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
-
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
-
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
-
-## Learn More
-
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
