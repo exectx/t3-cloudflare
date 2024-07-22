@@ -20,9 +20,7 @@ pnpx create-cloudflare@latest --template=https://github.com/exectx/t3-cloudflare
 
 ## Cloudflare setup
 
-For dev mode you need to:
-
-1. Create a D1 Database, Cloudflare's [guide](https://developers.cloudflare.com/d1/get-started/#3-create-a-database)
+1. Create a D1 Database, Cloudflare's [guide](https://developers.cloudflare.com/d1/get-started/#3-create-a-database) then update `database_id` in wrangler.toml
 
    ```sh
    pnpx wrangler d1 create <DATABASE-NAME>
