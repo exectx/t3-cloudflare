@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "d1",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -46,7 +46,6 @@
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.12.1",
-    "@cloudflare/workers-types": "^4.20240718.0",
     "@types/eslint": "^8.56.10",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
@@ -70,5 +69,6 @@
   },
   "ct3aMetadata": {
     "initVersion": "7.36.1"
-  }
+  },
+  "packageManager": "pnpm@9.5.0"
 }
