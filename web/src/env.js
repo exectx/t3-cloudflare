@@ -15,6 +15,7 @@ export const env = createEnv({
     CLOUDFLARE_ACCOUNT_ID: z.string().optional(),
     CLOUDFLARE_D1_DATABASE_ID: z.string().optional(),
     CLOUDFLARE_TOKEN: z.string().optional(),
+    UNKEY_ROOT_KEY: z.string(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -38,6 +39,7 @@ export const env = createEnv({
     CLOUDFLARE_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID,
     CLOUDFLARE_D1_DATABASE_ID: process.env.CLOUDFLARE_D1_DATABASE_ID,
     CLOUDFLARE_TOKEN: process.env.CLOUDFLARE_TOKEN,
+    UNKEY_ROOT_KEY: process.env.UNKEY_ROOT_KEY,
     NODE_ENV: process.env.NODE_ENV,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
