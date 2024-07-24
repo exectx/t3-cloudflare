@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { posts } from "@/server/db/schema";
+import { TRPCError } from "@trpc/server";
 
 export const postRouter = createTRPCRouter({
   hello: publicProcedure
@@ -15,6 +16,14 @@ export const postRouter = createTRPCRouter({
   create: publicProcedure
     .input(z.object({ name: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
+      const ip = ctx.headers.get("x-forwarded-for") ?? "undefined";
+      const ratelimit = await ctx.ratelimit.limit(ip);
+      if (!ratelimit.success) {
+        throw new TRPCError({
+          code: "TOO_MANY_REQUESTS",
+          message: "You are doing that too much. Please wait a bit.",
+        });
+      }
       await ctx.db.insert(posts).values({
         name: input.name,
       });

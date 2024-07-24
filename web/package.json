@@ -34,6 +34,7 @@
     "@trpc/next": "^11.0.0-rc.446",
     "@trpc/react-query": "^11.0.0-rc.446",
     "@trpc/server": "^11.0.0-rc.446",
+    "@unkey/ratelimit": "^0.3.2",
     "cf-bindings-proxy": "^0.7.1",
     "drizzle-orm": "^0.30.10",
     "geist": "^1.3.1",
