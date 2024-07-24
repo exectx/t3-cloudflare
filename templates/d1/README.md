@@ -53,7 +53,9 @@
    ```
 
 > [!NOTE]
-> If you want to use drizzle studio for the remote database, you need to set the `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_D1_DATABASE_ID`, `CLOUDFLARE_TOKEN` environment variables. [Cloudflare variables](#cloudflare-environment-variables) 3. Configure environment variables.
+> If you want to use drizzle studio for the remote database, you need to set the `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_D1_DATABASE_ID`, `CLOUDFLARE_TOKEN` environment variables. [Cloudflare variables](#cloudflare-environment-variables)
+
+3. Configure environment variables.
 
 ```sh
 cp .dev.vars.example .dev.vars
