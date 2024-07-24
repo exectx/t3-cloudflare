@@ -8,7 +8,7 @@ With tRPC, D1 and drizzle (no auth):
 pnpm create cloudflare@latest --template=https://github.com/exectx/t3-cloudflare/templates/d1
 ```
 
-## Following steps
+## Next steps
 
 > [!IMPORTANT]
 > In order to run `db:push:local` or related commands, you must create a D1 Database
