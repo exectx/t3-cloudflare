@@ -1,24 +1,17 @@
-> [!IMPORTANT]
->
-> - Turso branch - [turso](https://github.com/van14U/t3-cloudflare/tree/turso-db)
-> - Cloudflare D1 branch - [d1](https://github.com/van14U/t3-cloudflare/tree/main)
+# Collection of basic t3-app templates compatible with Cloudflare Pages
 
-- [x] Next.js
-- [x] Cloudflare pages (next-on-pages)
-- [x] tRPC
-- [x] DrizzleORM (Cloudflare D1)
-- [x] Drizzle studio (local and remote with d1-http driver)
-- [ ] No Auth
+You can use the templates using (Cloudflare C3 CLI) using pnpm as package manager:
 
-## Installation
-
-You can use this as a template or you can run (Cloudflare C3 CLI) using pnpm as a package manager:
+With tRPC, D1 and drizzle (no auth):
 
 ```sh
-pnpx create-cloudflare@latest --template=https://github.com/exectx/t3-cloudflare.git
+pnpm create cloudflare@latest --template=https://github.com/exectx/t3-cloudflare/templates/d1
 ```
 
-## Cloudflare setup
+## Following steps
+
+> [!IMPORTANT]
+> In order to run `db:push:local` or related commands, you must create a D1 Database
 
 1. Create a D1 Database, Cloudflare's [guide](https://developers.cloudflare.com/d1/get-started/#3-create-a-database) then update `database_id` in wrangler.toml
 
@@ -26,36 +19,55 @@ pnpx create-cloudflare@latest --template=https://github.com/exectx/t3-cloudflare
    pnpx wrangler d1 create <DATABASE-NAME>
    ```
 
-1. Configure environment variables:
+> [!WARNING]
+> If `db:push:local` and `db:migrate:local` fail, just run `d1:migrate:local` or `d1:migrate:remote` to fix the issue (Those use `wrangler` instead of `drizzle-kit`).
+>
+> Drizzle studio won't work locally either if the former commands fail.
+
+2. **After creating database**, Run migrations or push the changes. (via `drizzle-kit` or `wrangler` CLI)
+
+   For **local** D1 Database:
 
    ```sh
-   cp .dev.vars.example .dev.vars
+   pnpm db:push:local # drizzle-kit
    ```
 
-1. After installing dependencies generate migration files
-
    ```sh
+   # Or
    pnpm db:generate
+   pnpm db:migrate:local # drizzle-kit
    ```
-
-   and run migrations or push the changes
 
    ```sh
-   # locally
-   pnpm db:migrate:local
-   # or run on a production db
-   # `pnpm db:migrate` which needs CLOUDFLARE_* env vars
-   # or `pnpm d1:migrate:remote` which uses wrangler
+   # if those don't work, use wrangler CLI
+   pnpm db:generate
+   pnpm d1:migrate:local
    ```
 
-   (Optional) For faster development and prototyping, you can `push` the changes
+   For **remote** D1 Database (Needs `CLOUDFLARE_*` env vars):
 
    ```sh
-   # locally
-   pnpm db:push:local
-   # remotely (needs CLOUDFLARE_* env vars)
-   pnpm db:push
+   pnpm db:push # drizzle-kit
    ```
+
+   ```sh
+   # Or
+   pnpm db:generate
+   pnpm db:migrate #drizzle-kit
+   ```
+
+   ```sh
+   # if those don't work, use wrangler CLI
+   pnpm db:generate
+   pnpm d1:migrate:remote
+   ```
+
+> [!NOTE]
+> If you want to use drizzle studio for the remote database, you need to set the `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_D1_DATABASE_ID`, `CLOUDFLARE_TOKEN` environment variables. [Cloudflare variables](#cloudflare-environment-variables) 3. Configure environment variables.
+
+```sh
+cp .dev.vars.example .dev.vars
+```
 
 1. Run nextjs
 
@@ -63,43 +75,27 @@ pnpx create-cloudflare@latest --template=https://github.com/exectx/t3-cloudflare
 
    ```sh
    pnpm dev
-   ```
-
-   Or run a local production build
-
-   ```sh
+   # or run a production build
    pnpm preview
-   ```
-
-1. (OPTIONAL) Run proxy bindings (previously needed for HMR):
-
-   ```sh
-   pnpm bindings
    ```
 
 1. To deploy to Cloudflare, follow [cloudflare's Next.js guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-nextjs-site/#connect-your-application-to-the-github-repository-via-the-cloudflare-dashboard)
 
-> [!WARNING]  
+> [!WARNING]
 > Don't forget to set the environment variables in the Cloudflare dashboard and to run migrations on the production database.
 
-## Drizzle Studio
+## Cloudflare environment variables
 
-To access the local sqlite D1 database you need to run the following command.
-You don't need any cloudflare environment variables for this.
+You can find `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_DATABASE_ID` and `CLOUDFLARE_TOKEN` in Cloudflare dashboard
 
-```sh
-pnpm db:studio:local
-```
+- To get `CLOUDFLARE_ACCOUNT_ID` go to Workers & Pages -> Overview -> copy Account ID from the right sidebar
+- To get `CLOUDFLARE_DATABASE_ID` open D1 database you want to connect to and copy Database ID
+- To get `CLOUDFLARE_TOKEN` go to My profile -> API Tokens and create token with D1 edit permissions
 
-To access the remote D1 database you need to run the following command. It needs valid `CLOUDFLARE_*` environment variables:
+Now you can run drizzle-kit remote commands such as `db:push`, `db:migrate`, `db:studio`.
 
-- You can find accountId, databaseId and token in Cloudflare dashboard
-- To get accountId go to Workers & Pages -> Overview -> copy Account ID from the right sidebar
-- To get databaseId open D1 database you want to connect to and copy Database ID
-- To get token go to My profile -> API Tokens and create token with D1 edit permissions
+## TODO Templates
 
-Now you can run drizzle studio
-
-```sh
-pnpm db:studio
-```
+- [x] T3 + D1 + Drizzle ORM/KIT
+- [ ] T3 + TursoDB + Drizzle ORM/KIT
+- [ ] T3 + tRPC (only)
