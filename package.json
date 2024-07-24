@@ -6,7 +6,8 @@
   "scripts": {
     "build": "turbo pages:build",
     "dev": "turbo dev",
-    "dev:web": "pnpm --filter web dev"
+    "dev:web": "pnpm --filter web dev",
+    "build:web": "pnpm --filter web pages:build"
   },
   "devDependencies": {
     "turbo": "^2.0.9"
