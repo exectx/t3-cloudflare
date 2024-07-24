@@ -28,8 +28,7 @@ pages_build_output_dir = ".vercel/output/static"
 [[d1_databases]]
 binding = "DB"
 database_name = "prod-d1"
-database_id = "6d5afde0-0b33-41bf-959d-0a0086762040"
-preview_database_id = "DB"
+database_id = "6d5afde0-0b33-41bf-959d-0a0086762040" # wrangler d1 info <YOUR_DATABASE_NAME>
 
 # Bind a Durable Object. Durable objects are a scale-to-zero compute primitive based on the actor model.
 # Durable Objects can live for as long as needed. Use these when you need a long-running "server", such as in realtime apps.
