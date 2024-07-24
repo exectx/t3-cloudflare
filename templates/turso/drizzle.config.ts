@@ -2,15 +2,12 @@ import { type Config } from "drizzle-kit";
 
 import { env } from "@/env";
 
-if (!env.LOCAL_DB_PATH) {
-  throw new Error("LOCAL_DB_PATH is required, path to local sqlite database");
-}
-
 export default {
   schema: "./src/server/db/schema.ts",
+  out: "./migrations",
   dialect: "sqlite",
   dbCredentials: {
-    url: env.LOCAL_DB_PATH,
+    url: env.DATABASE_URL,
   },
   tablesFilter: [`t3-cloudflare_*`],
 } satisfies Config;
