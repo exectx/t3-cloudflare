@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "turbo pages:build",
-    "dev": "turbo dev"
+    "dev": "turbo dev",
+    "dev:web": "pnpm --filter web dev"
   },
   "devDependencies": {
     "turbo": "^2.0.9"
