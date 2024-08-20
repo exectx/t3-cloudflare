@@ -23,6 +23,7 @@ if (
 
 export default {
   schema: "./src/server/db/schema.ts",
+  verbose: true,
   out: "./migrations",
   dialect: "sqlite",
   driver: "d1-http",
