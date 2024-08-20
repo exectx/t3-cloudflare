@@ -13,6 +13,7 @@ if (!env.LOCAL_DB_PATH) {
 export default {
   schema: "./src/server/db/schema.ts",
   dialect: "sqlite",
+  out: "./migrations/",
   dbCredentials: {
     url: `file:${env.LOCAL_DB_PATH}`,
   },

@@ -7,7 +7,7 @@ import { TRPCError } from "@trpc/server";
 export const postRouter = createTRPCRouter({
   hello: publicProcedure
     .input(z.object({ text: z.string() }))
-    .query(({ input }) => {
+    .query(async ({ input }) => {
       return {
         greeting: `Hello ${input.text}`,
       };
@@ -16,7 +16,17 @@ export const postRouter = createTRPCRouter({
   create: publicProcedure
     .input(z.object({ name: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
-      const ip = ctx.headers.get("x-forwarded-for") ?? "undefined";
+      // const ip = ctx.headers.get("x-forwarded-for") ?? "undefined";
+      // getRequestContext().
+      const ip =
+        ctx.headers.get("Cf-Connecting-Ip") ??
+        ctx.headers.get("x-forwarded-for") ??
+        ctx.headers.get("Cf-Connecting-IPv6") ??
+        "create:post";
+      console.log("Cf-Connecting-Ip", ctx.headers.get("Cf-Connecting-Ip"));
+      console.log("x-forwarded-for", ctx.headers.get("x-forwarded-for"));
+      console.log("Cf-Connecting-IPv6", ctx.headers.get("Cf-Connecting-IPv6"));
+      console.log("x-real-ip", ctx.headers.get("x-real-ip"));
       const ratelimit = await ctx.ratelimit.limit(ip);
       if (!ratelimit.success) {
         throw new TRPCError({
