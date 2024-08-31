@@ -15,6 +15,11 @@ Turso template (no auth):
 pnpm create cloudflare@latest --template=https://github.com/exectx/t3-cloudflare/templates/turso
 ```
 
+Just tRPC
+```sh
+pnpm create cloudflare@latest --template=https://github.com/exectx/t3-cloudflare/templates/trpc
+```
+
 ## Template guides
 
 - [Cloudflare D1 (no-auth)](./templates/d1/README.md)
@@ -24,4 +29,4 @@ pnpm create cloudflare@latest --template=https://github.com/exectx/t3-cloudflare
 
 - [x] T3 + D1 + Drizzle ORM/KIT
 - [x] T3 + TursoDB + Drizzle ORM/KIT
-- [ ] T3 + tRPC (only)
+- [x] T3 + tRPC (only)
