@@ -3,27 +3,22 @@
 This is a collection of basic create-t3-app templates compatible with Cloudflare pages.
 You can use the templates using (Cloudflare C3 CLI) using pnpm as package manager:
 
-D1 template (no auth):
+D1 template (no auth) - [next steps guide](./templates/d1/README.md): 
 
 ```sh
-pnpm create cloudflare@latest --template=https://github.com/exectx/t3-cloudflare/templates/d1
+pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/d1
 ```
 
-Turso template (no auth):
+Turso template - [next steps guide](./templates/turso/README.md):
 
 ```sh
-pnpm create cloudflare@latest --template=https://github.com/exectx/t3-cloudflare/templates/turso
+pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/turso
 ```
 
 Just tRPC
 ```sh
-pnpm create cloudflare@latest --template=https://github.com/exectx/t3-cloudflare/templates/trpc
+pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/trpc
 ```
-
-## Template guides
-
-- [Cloudflare D1 (no-auth)](./templates/d1/README.md)
-- [Turso DB (no-auth)](./templates/turso/README.md)
 
 ## TODO Templates
 
