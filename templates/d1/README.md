@@ -12,7 +12,7 @@ Run the following command to create a D1 Database, then update the `database_id`
 ## 1. Set Up Database and Run Migrations
 
 > [!IMPORTANT]
-> Running drizzle-kit commands for remote databases requires valid cloudflare environment variables ([guide](#cloudflare-environment-variables))
+> Running drizzle-kit commands for remote databases requires valid cloudflare environment variables ([guide](#3-configure-cloudflare-environment-variables-optional))
 
 Once you have updated your `wrangler.toml` with the correct `database_id`, follow the instructions below.
 
