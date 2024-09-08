@@ -5,7 +5,10 @@ import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "@/trpc/react";
 import { PHProvider } from "@/app/posthog";
-import PostHogPageView from "@/app/_components/PHogPageView";
+import dynamic from "next/dynamic";
+const PostHogPageView = dynamic(() => import("./_components/PHogPageView"), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: "Create T3 App",
