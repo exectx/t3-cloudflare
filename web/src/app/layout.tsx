@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "@/trpc/react";
 import { PHProvider } from "@/app/posthog";
+import PostHogPageView from "@/app/_components/PHogPageView";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -21,11 +22,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
-        <TRPCReactProvider>
-          <PHProvider>{children}</PHProvider>
-        </TRPCReactProvider>
-      </body>
+      <PHProvider>
+        <body>
+          <TRPCReactProvider>
+            <PostHogPageView />
+            {children}
+          </TRPCReactProvider>
+        </body>
+      </PHProvider>
     </html>
   );
 }
