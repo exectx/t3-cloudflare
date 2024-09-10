@@ -2,7 +2,7 @@
 
 This is a collection of basic create-t3-app templates designed for compatibility with Cloudflare Pages. You can use these templates with the Cloudflare C3 CLI and pnpm as the package manager:
 
-Live demo using D1 - https://ct3a.exectx.run/
+Live demo using D1 - Eastern North America location: https://ct3a.exectx.run/
 
 D1 template (no auth) - [next steps guide](./templates/d1/README.md): 
 
