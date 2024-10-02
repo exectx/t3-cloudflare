@@ -7,7 +7,7 @@ This is a collection of basic create-t3-app templates designed for compatibility
 
 ## Live demo
 
-Live demo at https://ct3a.exectx.run/
+Live demo at https://ct3a.exectx.run/ (cloudflare pages + next-on-pages)
 
 - Generated using `create-t3-app` with the following options: tRPC, drizzle, no auth, tailwind, SQLite. Then modified to support D1
 - D1 instance location: Eastern North America — `enam`
