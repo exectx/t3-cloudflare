@@ -133,6 +133,7 @@ pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/trpc
 
 ## TODO Templates
 
-- [x] T3 + D1 + Drizzle ORM/KIT
-- [x] T3 + TursoDB + Drizzle ORM/KIT
-- [x] T3 + tRPC (only)
+- [x] T3 + D1 + Drizzle ORM/KIT (cf pages)
+- [x] T3 + TursoDB + Drizzle ORM/KIT (cf pages)
+- [x] T3 + tRPC (only) (cf pages)
+- [ ] T3 + D1 (cf workers)
