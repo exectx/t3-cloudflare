@@ -1,29 +1,31 @@
-# Next Steps (D1 Template)
+# Next Steps (D1 Template + Cloudflare workers)
 
 > [!NOTE]
 > If you have a better workflow, feel free to open an issue or a PR.
 
+Here are docs from cloudflare [workers+nextjs](https://developers.cloudflare.com/workers/frameworks/framework-guides/nextjs/).
 Run the following command to create a D1 Database, then update the `database_id` in `wrangler.toml`. (Cloudflare's D1 [guide](https://developers.cloudflare.com/d1/get-started/))
 
-   ```sh
-   pnpx wrangler d1 create <DATABASE-NAME>
-   ```
+```sh
+pnpx wrangler d1 create <DATABASE-NAME>
+```
 
 ## 1. Set Up Database and Run Migrations
 
 > [!IMPORTANT]
-> Running drizzle-kit commands for remote databases requires valid cloudflare environment variables ([guide](#3-configure-cloudflare-environment-variables-optional))
+> Running drizzle-kit commands for remote databases requires valid cloudflare environment variables ([guide](#3-optional-configure-cloudflare-environment-variables))
 
 Once you have updated your `wrangler.toml` with the correct `database_id`, follow the instructions below.
 
 <details>
   <summary>Using Wrangler for <code>local</code> database</summary>
 
-  ```sh
-  pnpm db:generate
-  pnpm d1:migrate:local 
-  pnpm dev # or pnpm preview
-  ```
+```sh
+pnpm db:generate
+pnpm d1:migrate:local
+pnpm dev # or pnpm preview
+```
+
 </details>
 
 <details>
@@ -46,11 +48,13 @@ Once you have updated your `wrangler.toml` with the correct `database_id`, follo
   pnpm dev # or pnpm preview
   ```
 
-  ### Pushing Schema Changes
-  ```sh
-  pnpm db:push:local
-  pnpm dev # or pnpm preview
-  ```
+### Pushing Schema Changes
+
+```sh
+pnpm db:push:local
+pnpm dev # or pnpm preview
+```
+
 </details>
 
 <details>
@@ -63,19 +67,20 @@ Once you have updated your `wrangler.toml` with the correct `database_id`, follo
   pnpm dev # or pnpm preview
   ```
 
-  ### Pushing Schema Changes
-  ```sh
-  pnpm db:push
-  pnpm dev # or pnpm preview
-  ```
+### Pushing Schema Changes
+
+```sh
+pnpm db:push
+pnpm dev # or pnpm preview
+```
+
 </details>
 
 ## 2. Deployment
 
-To deploy to Cloudflare, you can connect your application via cloudflare dashboard (GitHub integration) or run `pnpm deploy`. follow [Cloudflare's Next.js guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/ssr/get-started/#6-deploy-to-cloudflare-pages). 
+To deploy to Cloudflare, you can connect your application via cloudflare dashboard (GitHub integration) or run `pnpm deploy`. follow [Cloudflare's Next.js guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/ssr/get-started/#6-deploy-to-cloudflare-pages).
 
-
-## 3. Configure Cloudflare Environment Variables (Optional)
+## 3. (Optional) Configure Cloudflare Environment Variables
 
 You can run migrations using `wrangler d1 migrations ...`, but if you want to use `drizzle-kit` instead, you need to configure your environment variables.
 

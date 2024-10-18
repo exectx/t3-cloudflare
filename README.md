@@ -14,7 +14,7 @@ Live demo at https://ct3a.exectx.run/ (cloudflare pages + next-on-pages)
 
 ## Templates
 
-D1 template (no auth) - [next steps guide](./templates/d1/README.md):
+D1 template (pages) - [next steps guide](./templates/d1/README.md):
 
 > [!IMPORTANT]
 > After runing the command, follow the instructions below or in the link above to finish setting up your D1 template
@@ -119,7 +119,15 @@ Now you can run Drizzle-Kit remote commands such as `db:push`, `db:migrate`, `db
 
 </details>
 
-Turso template (no-auth) - [next steps guide](./templates/turso/README.md):
+D1 template (workers)
+
+> instructions are the same for the D1 template (no-auth)
+
+```sh
+pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/workers-d1
+```
+
+Turso template - [next steps guide](./templates/turso/README.md):
 
 ```sh
 pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/turso
@@ -133,7 +141,7 @@ pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/trpc
 
 ## TODO Templates
 
-- [x] T3 + D1 + Drizzle ORM/KIT (cf pages)
-- [x] T3 + TursoDB + Drizzle ORM/KIT (cf pages)
+- [x] T3 + D1 (cf pages)
+- [x] T3 + TursoDB (cf pages)
 - [x] T3 + tRPC (only) (cf pages)
-- [ ] T3 + D1 (cf workers)
+- [x] T3 + D1 (cf workers)
