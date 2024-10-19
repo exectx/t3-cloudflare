@@ -1,40 +1,20 @@
-# T3-App templates - Cloudflare Pages
-
-This is a collection of basic create-t3-app templates designed for compatibility with Cloudflare Pages. You can use these templates with the Cloudflare C3 CLI and pnpm as the package manager:
+# Next Steps (D1 Template + Cloudflare workers)
 
 > [!NOTE]
-> Feel free to open an issue or PR if you have better templates
+> If you have a better workflow, feel free to open an issue or a PR.
 
-## Live demo
-
-Live demo at https://ct3a.exectx.run/ (cloudflare pages + next-on-pages)
-
-- Generated using `create-t3-app` with the following options: tRPC, drizzle, no auth, tailwind, SQLite. Then modified to support D1
-- D1 instance location: Eastern North America — `enam`
-
-## Templates
-
-D1 template (pages) - [next steps guide](./templates/d1/README.md):
-
-> [!IMPORTANT]
-> After runing the command, follow the instructions below or in the link above to finish setting up your D1 template
-
-```sh
-pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/d1
-```
-
-<details>
-<summary>Next steps... <ins>Instructions for finishing setting up your D1 database</ins></summary>
-
+Here are docs from cloudflare [workers+nextjs](https://developers.cloudflare.com/workers/frameworks/framework-guides/nextjs/).
+Here you also have the workers & pages compatibility matrix [here](https://developers.cloudflare.com/workers/static-assets/compatibility-matrix/).
 Run the following command to create a D1 Database, then update the `database_id` in `wrangler.toml`. (Cloudflare's D1 [guide](https://developers.cloudflare.com/d1/get-started/))
 
 ```sh
 pnpx wrangler d1 create <DATABASE-NAME>
 ```
 
-### 1. Set Up Database and Run Migrations
+## 1. Set Up Database and Run Migrations
 
-> Running drizzle-kit commands for remote databases requires valid cloudflare environment variables ([guide](#3-configure-cloudflare-environment-variables-optional))
+> [!IMPORTANT]
+> Running drizzle-kit commands for remote databases requires valid cloudflare environment variables ([guide](#3-optional-configure-cloudflare-environment-variables))
 
 Once you have updated your `wrangler.toml` with the correct `database_id`, follow the instructions below.
 
@@ -62,14 +42,14 @@ pnpm dev # or pnpm preview
 <details>
   <summary>Using Drizzle-Kit for <code>local</code> database</summary>
   
-  #### Using Migrations
+  ### Using Migrations
   ```sh
   pnpm db:generate
   pnpm db:migrate:local
   pnpm dev # or pnpm preview
   ```
 
-#### Pushing Schema Changes
+### Pushing Schema Changes
 
 ```sh
 pnpm db:push:local
@@ -81,14 +61,14 @@ pnpm dev # or pnpm preview
 <details>
   <summary>Using Drizzle-Kit for <code>remote</code> database <strong>requires Cloudflare environment variables</strong></summary> 
   
-  #### Using Migrations
+  ### Using Migrations
   ```sh
   pnpm db:generate
   pnpm db:migrate
   pnpm dev # or pnpm preview
   ```
 
-#### Pushing Schema Changes
+### Pushing Schema Changes
 
 ```sh
 pnpm db:push
@@ -97,11 +77,11 @@ pnpm dev # or pnpm preview
 
 </details>
 
-### 2. Deployment
+## 2. Deployment
 
 To deploy to Cloudflare, you can connect your application via cloudflare dashboard (GitHub integration) or run `pnpm deploy`. follow [Cloudflare's Next.js guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/ssr/get-started/#6-deploy-to-cloudflare-pages).
 
-### 3. Configure Cloudflare Environment Variables (Optional)
+## 3. (Optional) Configure Cloudflare Environment Variables
 
 You can run migrations using `wrangler d1 migrations ...`, but if you want to use `drizzle-kit` instead, you need to configure your environment variables.
 
@@ -116,32 +96,3 @@ You can find `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_DATABASE_ID`, and `CLOUDFLARE_
 - To get `CLOUDFLARE_TOKEN`, go to My Profile -> API Tokens and create a token with D1 edit permissions.
 
 Now you can run Drizzle-Kit remote commands such as `db:push`, `db:migrate`, `db:studio`, etc.
-
-</details>
-
-D1 template ([workers static assets](https://developers.cloudflare.com/workers/static-assets/) & OpenNext) [next steps guide](./templates/workers-d1/README.md)
-
-> Cloudflare pages & workers compatibility matrix [here](https://developers.cloudflare.com/pages/platform/compatibility).
-
-```sh
-pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/workers-d1
-```
-
-Turso template - [next steps guide](./templates/turso/README.md)
-
-```sh
-pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/turso
-```
-
-Just tRPC
-
-```sh
-pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/trpc
-```
-
-## TODO Templates
-
-- [x] T3 + D1 (cf pages)
-- [x] T3 + TursoDB (cf pages)
-- [x] T3 + tRPC (only) (cf pages)
-- [x] T3 + D1 (cf workers)
