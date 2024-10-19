@@ -121,7 +121,7 @@ Now you can run Drizzle-Kit remote commands such as `db:push`, `db:migrate`, `db
 
 D1 template ([workers static assets](https://developers.cloudflare.com/workers/static-assets/) & OpenNext) [next steps guide](./templates/workers-d1/README.md)
 
-> Cloudflare pages & workers compatibility matrix [here](https://developers.cloudflare.com/pages/platform/compatibility).
+> Cloudflare pages & workers compatibility matrix [here](https://developers.cloudflare.com/workers/static-assets/compatibility-matrix/).
 
 ```sh
 pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/workers-d1
