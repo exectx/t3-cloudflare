@@ -4,6 +4,7 @@
 > If you have a better workflow, feel free to open an issue or a PR.
 
 Here are docs from cloudflare [workers+nextjs](https://developers.cloudflare.com/workers/frameworks/framework-guides/nextjs/).
+Here you also have the workers & pages compatibility matrix [here](https://developers.cloudflare.com/workers/static-assets/compatibility-matrix/).
 Run the following command to create a D1 Database, then update the `database_id` in `wrangler.toml`. (Cloudflare's D1 [guide](https://developers.cloudflare.com/d1/get-started/))
 
 ```sh

@@ -119,15 +119,15 @@ Now you can run Drizzle-Kit remote commands such as `db:push`, `db:migrate`, `db
 
 </details>
 
-D1 template (workers)
+D1 template ([workers static assets](https://developers.cloudflare.com/workers/static-assets/) & OpenNext) [next steps guide](./templates/workers-d1/README.md)
 
-> instructions are the same for the D1 template (no-auth)
+> Cloudflare pages & workers compatibility matrix [here](https://developers.cloudflare.com/pages/platform/compatibility).
 
 ```sh
 pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/workers-d1
 ```
 
-Turso template - [next steps guide](./templates/turso/README.md):
+Turso template - [next steps guide](./templates/turso/README.md)
 
 ```sh
 pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/turso
