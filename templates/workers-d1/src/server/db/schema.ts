@@ -27,7 +27,7 @@ export const posts = createTable(
       .default(sql`(unixepoch())`)
       .$onUpdate(() => new Date()),
   },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  }),
+  (example) => ([
+    index("name_idx").on(example.name),
+  ]),
 );
