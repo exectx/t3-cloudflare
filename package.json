@@ -1,16 +1,71 @@
 {
-  "name": "t3-cloudflare-templates",
+  "name": "t3-cloudflare",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "turbo pages:build",
-    "dev": "turbo dev",
-    "dev:web": "pnpm --filter web dev",
-    "build:web": "pnpm --filter web pages:build"
+    "build": "next build",
+    "check": "next lint && tsc --noEmit",
+    "db:check": "drizzle-kit check",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:migrate:local": "pnpm with-env pnpm with-local-db drizzle-kit migrate --config drizzle.local.config.ts",
+    "db:push": "drizzle-kit push",
+    "db:push:local": "pnpm with-env pnpm with-local-db drizzle-kit push --config drizzle.local.config.ts",
+    "db:studio": "drizzle-kit studio",
+    "db:studio:local": "pnpm with-env pnpm with-local-db drizzle-kit studio --config drizzle.local.config.ts",
+    "dev": "next dev --turbo",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
+    "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "with-env": "dotenv -e .dev.vars --",
+    "with-local-db": "cross-env LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit)"
+  },
+  "dependencies": {
+    "@opennextjs/cloudflare": "^1.6.5",
+    "@t3-oss/env-nextjs": "^0.12.0",
+    "@tanstack/react-query": "^5.69.0",
+    "@trpc/client": "^11.0.0",
+    "@trpc/react-query": "^11.0.0",
+    "@trpc/server": "^11.0.0",
+    "drizzle-orm": "^0.41.0",
+    "next": "^15.2.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "server-only": "^0.0.1",
+    "superjson": "^2.2.1",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
-    "turbo": "^2.0.9"
+    "@cloudflare/workers-types": "^4.20250312.0",
+    "@eslint/eslintrc": "^3.3.1",
+    "@tailwindcss/postcss": "^4.0.15",
+    "@types/node": "^20.14.10",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "cross-env": "^10.0.0",
+    "dotenv-cli": "^8.0.0",
+    "drizzle-kit": "^0.30.5",
+    "eslint": "^9.23.0",
+    "eslint-config-next": "^15.2.3",
+    "eslint-plugin-drizzle": "^0.2.3",
+    "opennextjs-cloudflare": "^1.0.0",
+    "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.0.15",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.27.0",
+    "wrangler": "^4.30.0"
   },
-  "packageManager": "pnpm@9.5.0"
+  "ct3aMetadata": {
+    "initVersion": "7.40.0"
+  },
+  "packageManager": "pnpm@10.28.1"
 }
