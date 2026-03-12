@@ -26,7 +26,7 @@ import { getDb } from "~/server/db";
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
   return {
-    db: await getDb(),
+    db: getDb(),
     ...opts,
   };
 };

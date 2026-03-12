@@ -51,3 +51,5 @@ yarn-error.log*
 # agents
 .agent*
 .kiro
+
+.pnpm-store
