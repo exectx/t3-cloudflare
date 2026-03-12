@@ -47,3 +47,7 @@ yarn-error.log*
 
 # idea files
 .idea
+
+# agents
+.agent*
+.kiro
