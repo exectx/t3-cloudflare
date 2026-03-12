@@ -40,14 +40,14 @@ Local D1 (Drizzle Kit):
 
 ```sh
 pnpm db:generate
-pnpm db:migrate:local
+pnpm db:migrate
 ```
 
 Remote D1 (Drizzle Kit, requires `.dev.vars`):
 
 ```sh
 pnpm db:generate
-pnpm db:migrate
+pnpm db:migrate:prod
 ```
 
 ## Build, preview, deploy
