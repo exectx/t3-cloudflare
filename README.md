@@ -6,7 +6,7 @@ OpenNext and D1.
 ## Quickstart with Cloudflare C3 CLI
 
 ```sh
-pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/d1
+pnpm create cloudflare@latest --template=exectx/t3-cloudflare
 ```
 
 ## Requirements
