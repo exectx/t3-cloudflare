@@ -15,6 +15,7 @@ env:
 jobs:
   deploy:
     name: Deploy to Cloudflare
+    if: github.repository == 'exectx/t3-cloudflare'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -31,8 +32,18 @@ jobs:
       - name: Inject D1 database ID
         run: sed -i 's/REPLACE_WITH_YOUR_DATABASE_ID/${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}/' wrangler.jsonc
 
-      - run: pnpm exec opennextjs-cloudflare build
-      - run: pnpm exec opennextjs-cloudflare deploy
+      - name: Run database migrations
+        run: pnpm drizzle-kit migrate
         env:
+          NODE_ENV: production
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          # CLOUDFLARE_TOKEN is the env var drizzle.config.ts reads for the D1 HTTP driver
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_D1_TOKEN }}
+
+      - name: Build & Deploy Worker
+        run: pnpm run deploy
+        env:
+          NODE_ENV: production
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKERS_API_TOKEN }}
