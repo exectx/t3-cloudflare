@@ -3,7 +3,25 @@ name: CI
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '**.md'
+      - '**.mdx'
+      - '.gitignore'
+      - '.env.example'
+      - '.dev.vars.example'
+      - 'public/**'
+      - 'LICENSE'
+      - 'docs/**'
   pull_request:
+    paths-ignore:
+      - '**.md'
+      - '**.mdx'
+      - '.gitignore'
+      - '.env.example'
+      - '.dev.vars.example'
+      - 'public/**'
+      - 'LICENSE'
+      - 'docs/**'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}

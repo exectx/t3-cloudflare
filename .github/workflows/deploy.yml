@@ -3,6 +3,15 @@ name: Deploy
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '**.md'
+      - '**.mdx'
+      - '.gitignore'
+      - '.env.example'
+      - '.dev.vars.example'
+      - 'public/**'
+      - 'LICENSE'
+      - 'docs/**'
   workflow_dispatch:
 
 concurrency:
