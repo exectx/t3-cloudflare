@@ -3,6 +3,12 @@
 This repo is a T3 Stack app (tRPC + Drizzle + Tailwind) configured for Cloudflare Workers using
 OpenNext and D1.
 
+## Quickstart with Cloudflare C3 CLI
+
+```sh
+pnpm create cloudflare@latest --template=exectx/t3-cloudflare/templates/d1
+```
+
 ## Requirements
 
 - `pnpm`
