@@ -3,6 +3,9 @@
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
+	"repository": {
+		"url": "https://github.com/exectx/t3-cloudflare"
+	},
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
