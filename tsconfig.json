@@ -28,7 +28,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"~/*": ["./src/*"]
-		}
+		},
+		"types": ["./cloudflare-env.d.ts", "node"]
 	},
 	"include": [
 		"next-env.d.ts",
@@ -38,5 +39,5 @@
 		"**/*.js",
 		".next/types/**/*.ts"
 	],
-	"exclude": ["node_modules", "generated"]
+	"exclude": ["node_modules", "generated", ".open-next"]
 }
