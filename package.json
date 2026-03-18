@@ -2,21 +2,22 @@
 	"name": "t3-cloudflare",
 	"version": "0.1.0",
 	"private": true,
-	"type": "module",
 	"repository": {
 		"url": "https://github.com/exectx/t3-cloudflare"
 	},
+	"type": "module",
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"check": "biome check . && tsc --noEmit",
-		"lint": "biome check .",
-		"lint:fix": "biome check --write .",
+		"check": "oxfmt --check . && oxlint . && tsc --noEmit",
+		"lint": "oxlint .",
+		"lint:fix": "oxlint --fix .",
 		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
 		"upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
 		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
 		"cf-typegen": "node scripts/cf-typegen.mjs",
+		"cf-typegen2": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
 		"db:check": "drizzle-kit check",
 		"db:check:prod": "pnpm with-env cross-env NODE_ENV=production drizzle-kit check",
 		"db:generate": "drizzle-kit generate",
@@ -26,7 +27,8 @@
 		"db:push:prod": "pnpm with-env cross-env NODE_ENV=production drizzle-kit push",
 		"db:studio": "drizzle-kit studio",
 		"db:studio:prod": "pnpm with-env cross-env NODE_ENV=production drizzle-kit studio",
-		"format": "biome format --write .",
+		"format": "oxfmt .",
+		"format:check": "oxfmt --check .",
 		"typecheck": "tsc --noEmit",
 		"with-env": "dotenv -e .dev.vars --"
 	},
@@ -46,7 +48,6 @@
 		"zod": "^3.24.2"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.7",
 		"@cloudflare/workers-types": "^4.20260316.1",
 		"@tailwindcss/postcss": "^4.0.15",
 		"@types/node": "^20.14.10",
@@ -56,13 +57,15 @@
 		"dotenv-cli": "^8.0.0",
 		"drizzle-kit": "^0.31.9",
 		"opennextjs-cloudflare": "^1.0.0",
+		"oxfmt": "^0.41.0",
+		"oxlint": "^1.56.0",
 		"postcss": "^8.5.3",
 		"tailwindcss": "^4.0.15",
 		"typescript": "^5.8.2",
 		"wrangler": "^4.74.0"
 	},
+	"packageManager": "pnpm@10.32.1",
 	"ct3aMetadata": {
 		"initVersion": "7.40.0"
-	},
-	"packageManager": "pnpm@10.32.1"
+	}
 }
