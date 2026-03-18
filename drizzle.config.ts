@@ -1,7 +1,9 @@
 import { spawnSync } from "node:child_process";
 import { readdirSync } from "node:fs";
 import path from "node:path";
+
 import { defineConfig } from "drizzle-kit";
+
 import { env } from "~/env";
 
 const prod = env.NODE_ENV === "production";
