@@ -1,6 +1,6 @@
 version: 2
 updates:
-  # npm / pnpm dependencies
+  # npm / pnpm dependencies — single group, single PR at a time
   - package-ecosystem: npm
     directory: /
     schedule:
@@ -8,18 +8,14 @@ updates:
       day: monday
       time: "09:00"
       timezone: America/New_York
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 1
     commit-message:
       prefix: chore
       include: scope
     groups:
-      prod-dependencies:
-        dependency-type: production
-        update-types:
-          - minor
-          - patch
-      dev-dependencies:
-        dependency-type: development
+      all-dependencies:
+        patterns:
+          - "*"
         update-types:
           - minor
           - patch
@@ -29,12 +25,12 @@ updates:
         update-types:
           - version-update:semver-major
 
-  # GitHub Actions
+  # GitHub Actions — single PR at a time
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 1
     commit-message:
       prefix: chore
       include: scope
