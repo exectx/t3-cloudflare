@@ -34,7 +34,7 @@
 	"dependencies": {
 		"@opennextjs/cloudflare": "^1.20.1",
 		"@t3-oss/env-nextjs": "^0.13.11",
-		"@tanstack/react-query": "^5.101.2",
+		"@tanstack/react-query": "^5.101.3",
 		"@trpc/client": "^11.18.0",
 		"@trpc/react-query": "^11.18.0",
 		"@trpc/server": "^11.18.0",
@@ -48,7 +48,7 @@
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20260702.1",
-		"@tailwindcss/postcss": "^4.3.2",
+		"@tailwindcss/postcss": "^4.3.3",
 		"@types/node": "^20.19.43",
 		"@types/react": "^19.2.17",
 		"@types/react-dom": "^19.0.0",
@@ -56,12 +56,12 @@
 		"dotenv-cli": "^8.0.0",
 		"drizzle-kit": "^0.31.10",
 		"opennextjs-cloudflare": "^1.0.0",
-		"oxfmt": "^0.58.0",
-		"oxlint": "^1.73.0",
-		"postcss": "^8.5.19",
-		"tailwindcss": "^4.3.2",
+		"oxfmt": "^0.59.0",
+		"oxlint": "^1.74.0",
+		"postcss": "^8.5.20",
+		"tailwindcss": "^4.3.3",
 		"typescript": "^5.8.2",
-		"wrangler": "^4.110.0"
+		"wrangler": "^4.112.0"
 	},
 	"packageManager": "pnpm@10.32.1",
 	"ct3aMetadata": {
