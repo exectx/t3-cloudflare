@@ -39,7 +39,7 @@
 		"@trpc/react-query": "^11.18.0",
 		"@trpc/server": "^11.18.0",
 		"drizzle-orm": "^0.45.2",
-		"next": "^15.5.22",
+		"next": "^15.5.23",
 		"react": "^19.2.8",
 		"react-dom": "^19.2.8",
 		"server-only": "^0.0.1",
@@ -56,12 +56,12 @@
 		"dotenv-cli": "^8.0.0",
 		"drizzle-kit": "^0.31.10",
 		"opennextjs-cloudflare": "^1.0.0",
-		"oxfmt": "^0.61.0",
-		"oxlint": "^1.76.0",
-		"postcss": "^8.5.25",
+		"oxfmt": "^0.62.0",
+		"oxlint": "^1.77.0",
+		"postcss": "^8.5.26",
 		"tailwindcss": "^4.3.3",
 		"typescript": "^5.8.2",
-		"wrangler": "^4.117.0"
+		"wrangler": "^4.120.0"
 	},
 	"packageManager": "pnpm@10.32.1",
 	"ct3aMetadata": {
