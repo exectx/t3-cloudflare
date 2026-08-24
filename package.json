@@ -56,12 +56,12 @@
 		"dotenv-cli": "^8.0.0",
 		"drizzle-kit": "^0.31.10",
 		"opennextjs-cloudflare": "^1.0.0",
-		"oxfmt": "^0.63.0",
-		"oxlint": "^1.78.0",
+		"oxfmt": "^0.64.0",
+		"oxlint": "^1.79.0",
 		"postcss": "^8.5.26",
 		"tailwindcss": "^4.3.3",
 		"typescript": "^5.8.2",
-		"wrangler": "^4.123.0"
+		"wrangler": "^4.125.0"
 	},
 	"packageManager": "pnpm@10.32.1",
 	"ct3aMetadata": {
